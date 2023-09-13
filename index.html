@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assests/css/style.css">
+</head>
+
+<body>
+    <section class="container compiler-container">
+        <button onclick="runCode()">Run</button>
+        <div class="row compiler-row">
+            <div class="col-6 border border-danger">
+                <div class="d-flex flex-column h-100">
+                    <textarea placeholder="write some code here" id="compiler"
+                        class="text-area w-100 h-100 border-0"></textarea>
+                    <div class="bg-light quickadd p-4">
+                        <h2 class="mb-3">Quick Add</h2>
+                        <button class="h1 d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
+                            <div class="bg-white shadow-sm p-2 rounded-2 m-0">
+                                <h3 class="d-flex align-items-baseline">Heading
+                                    <pre class="mb-0">&lt;h1&gt;</pre>
+                                </h3>
+                            </div>
+                        </button>
+
+                        <button class="p d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
+                            <div class=" bg-white shadow-sm p-2 rounded-2 m-0">
+                                <h3 class="d-flex align-items-baseline">Paragraph
+                                    <pre class="mb-0">&lt;p&gt;</pre>
+                                </h3>
+                            </div>
+                        </button>
+
+                        <button class="img d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
+                            <div class=" bg-white shadow-sm p-2 rounded-2">
+                                <h3 class="d-flex align-items-baseline">Image
+                                    <pre class="mb-0">&lt;img src...&gt;</pre>
+                                </h3>
+                            </div>
+                        </button>
+
+                        <button class="video d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
+                            <div class="bg-white shadow-sm p-2 rounded-2">
+                                <h3 class="d-flex align-items-baseline">Video
+                                    <pre class="mb-0">&lt;video&gt;</pre>
+                                </h3>
+                            </div>
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6 border border-danger">
+                <iframe src="" frameborder="0" class="w-100 h-100" id="iframe"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="assests/js/index.js"></script>
+</body>
+
+</html>
