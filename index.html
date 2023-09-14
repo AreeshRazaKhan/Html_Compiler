@@ -11,6 +11,78 @@
 
 <body>
     <section class="container compiler-container">
+        <!-- Modal -->
+        <div class="modal fade" id="h1Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-column">
+                        <label for="">Enter Heading Text:</label>
+                        <input type="text" id="h1-text">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="h1-btn btn btn-primary" data-bs-dismiss="modal"
+                            onclick="quickAdd('h1')">Insert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="pModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex flex-column">
+                        <label for="">Enter Paragraph Text:</label>
+                        <input type="text" id="p-text">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="img-btn btn btn-primary" data-bs-dismiss="modal"
+                            onclick="quickAdd('p')">Insert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="imgModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="" class="d-block">Enter Image Source:</label>
+                        <input type="text" id="img-src" class="d-block w-100">
+                        <div class="d-flex">
+                            <div class="d-flex flex-column w-100">
+                                <label for="">Enter Image Width:</label>
+                                <input type="text" id="img-width" class=" d-block w-100">
+                            </div>
+                            <div class="d-flex flex-column w-100">
+                                <label for="">Enter Image Height:</label>
+                                <input type="text" id="img-height" class="d-block w-100">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="img-btn btn btn-primary" data-bs-dismiss="modal"
+                            onclick="quickAdd('img')">Insert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <button onclick="runCode()">Run</button>
         <div class="row compiler-row">
             <div class="col-6 border border-danger">
@@ -19,7 +91,8 @@
                         class="text-area w-100 h-100 border-0"></textarea>
                     <div class="bg-light quickadd p-4">
                         <h2 class="mb-3">Quick Add</h2>
-                        <button class="h1 d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
+                        <button class="d-block bg-transparent border-0 p-0 w-100 mb-3" data-bs-toggle="modal"
+                            data-bs-target="#h1Modal">
                             <div class="bg-white shadow-sm p-2 rounded-2 m-0">
                                 <h3 class="d-flex align-items-baseline">Heading
                                     <pre class="mb-0">&lt;h1&gt;</pre>
@@ -27,7 +100,8 @@
                             </div>
                         </button>
 
-                        <button class="p d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
+                        <button class="d-block bg-transparent border-0 p-0 w-100 mb-3" data-bs-toggle="modal"
+                            data-bs-target="#pModal">
                             <div class=" bg-white shadow-sm p-2 rounded-2 m-0">
                                 <h3 class="d-flex align-items-baseline">Paragraph
                                     <pre class="mb-0">&lt;p&gt;</pre>
@@ -35,7 +109,8 @@
                             </div>
                         </button>
 
-                        <button class="img d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
+                        <button class=" d-block bg-transparent border-0 p-0 w-100 mb-3" data-bs-toggle="modal"
+                            data-bs-target="#imgModal">
                             <div class=" bg-white shadow-sm p-2 rounded-2">
                                 <h3 class="d-flex align-items-baseline">Image
                                     <pre class="mb-0">&lt;img src...&gt;</pre>
@@ -62,6 +137,7 @@
     </section>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assests/js/index.js"></script>
 </body>
 

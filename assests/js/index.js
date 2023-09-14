@@ -1,39 +1,25 @@
 var code = document.getElementById('compiler');
-function htmlCompiler(text) {
-    var displayCanvas = document.getElementById('iframe').contentDocument.body;
-    displayCanvas.innerHTML = code.value;
-}
+// function htmlCompiler(text) {
+//     var displayCanvas = document.getElementById('iframe').contentDocument.body;
+//     displayCanvas.innerHTML = code.value;
+// }
 
-var promptInput = prompt;
-var widthPrompt = prompt;
-var heightPrompt = prompt;
 function quickAdd(tagName) {
-    var quickTag = tagName.classList;
-    if (quickTag.contains('h1')) {
-        promptInput = prompt("Insert Heading Text");
-        code.value += `\n<h1>${promptInput}</h1>`;
-    }
-    else if (quickTag.contains('p')) {
-        promptInput = prompt("Insert Paragraph Text");
-        code.value += `\n<p>${promptInput}</p>`;
-    }
-    else if (quickTag.contains('img')) {
-        promptInput = prompt("Insert Image Source");
-        widthPrompt = prompt("Enter Width");
-        heightPrompt = prompt("Enter Height");
-        code.value += `\n<img src="${promptInput}"${widthPrompt ? ` width="${widthPrompt}"` : ''}${heightPrompt ? ` height="${heightPrompt}"` : ''}>`
+    var inputText = document.getElementById(tagName + '-text'); //h1-text or p-text
+    var src = document.getElementById(tagName + '-src');
+    var width = document.getElementById(tagName + '-width');
+    var height = document.getElementById(tagName + '-height');
 
-
+    if (tagName === 'img' || tagName === 'video') {
+        code.value += `\n<${tagName} src="${src.value}"${width.value ? ` width="${width.value}"` : ''}${height.value ? ` height="${height.value}"` : ''}> ${tagName === 'video' ? '</video>' : ''}`
+    } else {
+        code.value += `\n<${tagName}>${inputText.value}</${tagName}>`;
     }
-    else if (quickTag.contains('video')) {
-        promptInput = prompt("Insert Video Source");
-        widthPrompt = prompt("Enter Width");
-        heightPrompt = prompt("Enter Height");
-        code.value += `\n<video src="${promptInput}" ${widthPrompt ? `width="${widthPrompt}"` : ``} ${heightPrompt ? `height="${heightPrompt}"` : ``}></video>`
-    }
-
+    runCode()
+    inputText.value = src.value = width.value = height.value = "";
 }
 
 function runCode() {
-    htmlCompiler();
+    var displayCanvas = document.getElementById('iframe').contentDocument.body;
+    displayCanvas.innerHTML = code.value;
 }
