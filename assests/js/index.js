@@ -23,3 +23,28 @@ function runCode() {
     var displayCanvas = document.getElementById('iframe').contentDocument.body;
     displayCanvas.innerHTML = code.value;
 }
+
+// const droppable = new Draggable.Draggable(
+//     document.querySelectorAll("button"), {
+//     draggable: "button",
+//     droppable: "iframe"
+// });
+
+// var containers = document.querySelectorAll('.quickadd');
+const sortable = new Draggable.Sortable(document.querySelectorAll('.quickadd'), {
+    draggable: '.drag-item',
+    classes: {
+        'draggable:over': ['draggable--over', 'opacity-25'],
+        'source:dragging': ['draggable-source--is-dragging', 'opacity-0'],
+    },
+    mirror: {
+        constrainDimensions: true,
+        xAxis: false,
+    },
+    swapAnimation: {
+        duration: 200,
+        easingFunction: 'ease-in-out',
+        horizontal: false,
+    },
+    plugins: [Draggable.Plugins.ResizeMirror, Draggable.Plugins.SwapAnimation],
+});
