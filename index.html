@@ -83,48 +83,99 @@
             </div>
         </div>
 
+        <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label for="" class="d-block">Enter Video Source:</label>
+                        <input type="text" id="video-src" class="d-block w-100">
+                        <div class="d-flex">
+                            <div class="d-flex flex-column w-100">
+                                <label for="">Enter Video Width:</label>
+                                <input type="text" id="video-width" class=" d-block w-100">
+                            </div>
+                            <div class="d-flex flex-column w-100">
+                                <label for="">Enter Video Height:</label>
+                                <input type="text" id="video-height" class="d-block w-100">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="video-btn btn btn-primary" data-bs-dismiss="modal"
+                            onclick="quickAdd('video')">Insert</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <button onclick="runCode()">Run</button>
         <div class="row compiler-row">
             <div class="col-6 border border-danger">
                 <div class="d-flex flex-column h-100">
                     <textarea placeholder="write some code here" id="compiler"
-                        class="text-area w-100 h-100 border-0"></textarea>
-                    <div class="bg-light quickadd p-4">
+                        class="text-area w-100 h-100 border-0 drag-item" ondrop="onDrop(event)"
+                        ondragover="allowDrop(event)"></textarea>
+                    <div class="bg-light quickadd p-4 position-relative">
                         <h2 class="mb-3">Quick Add</h2>
-                        <button class="d-block bg-transparent border-0 p-0 w-100 mb-3" data-bs-toggle="modal"
-                            data-bs-target="#h1Modal">
-                            <div class="bg-white shadow-sm p-2 rounded-2 m-0">
+
+                        <div class="bg-transparent border-0 p-0 mb-3 drag-item" draggable="true"
+                            ondragstart="dragStart(this)">
+
+                            <div class="bg-white shadow-sm p-2 rounded-2 m-0 position-relative">
+                                <div class="drag-handler position-absolute z-1 start-0 top-0 w-100 h-100">
+                                </div>
                                 <h3 class="d-flex align-items-baseline">Heading
                                     <pre class="mb-0">&lt;h1&gt;</pre>
                                 </h3>
+                                <button class="position-absolute top-50 end-0 translate-middle-y z-3"
+                                    data-bs-toggle="modal" data-bs-target="#h1Modal">Add</button>
                             </div>
-                        </button>
+                        </div>
 
-                        <button class="d-block bg-transparent border-0 p-0 w-100 mb-3" data-bs-toggle="modal"
-                            data-bs-target="#pModal">
-                            <div class=" bg-white shadow-sm p-2 rounded-2 m-0">
+                        <div class=" bg-transparent border-0 p-0 mb-3 drag-item" draggable="true"
+                            ondragstart="dragStart(this)">
+                            <div class=" bg-white shadow-sm p-2 rounded-2 m-0 position-relative">
+                                <div class="drag-handler position-absolute z-1 start-0 top-0 w-100 h-100">
+                                </div>
                                 <h3 class="d-flex align-items-baseline">Paragraph
                                     <pre class="mb-0">&lt;p&gt;</pre>
                                 </h3>
+                                <button class="position-absolute top-50 end-0 translate-middle-y z-3"
+                                    data-bs-toggle="modal" data-bs-target="#pModal">Add</button>
                             </div>
-                        </button>
+                        </div>
 
-                        <button class=" d-block bg-transparent border-0 p-0 w-100 mb-3" data-bs-toggle="modal"
-                            data-bs-target="#imgModal">
-                            <div class=" bg-white shadow-sm p-2 rounded-2">
+                        <div class=" bg-transparent border-0 p-0 mb-3 drag-item" draggable="true"
+                            ondragstart="dragStart(this)">
+                            <div class=" bg-white shadow-sm p-2 rounded-2 position-relative">
+                                <div class="drag-handler position-absolute z-1 start-0 top-0 w-100 h-100">
+                                </div>
                                 <h3 class="d-flex align-items-baseline">Image
                                     <pre class="mb-0">&lt;img src...&gt;</pre>
                                 </h3>
+                                <button class="position-absolute top-50 end-0 translate-middle-y z-3"
+                                    data-bs-toggle="modal" data-bs-target="#imgModal">Add</button>
                             </div>
-                        </button>
+                        </div>
 
-                        <button class="video d-block bg-transparent border-0 p-0 w-100 mb-3" onclick="quickAdd(this)">
-                            <div class="bg-white shadow-sm p-2 rounded-2">
+                        <div class="video bg-transparent border-0 p-0 mb-3 drag-item" draggable="true"
+                            ondragstart="dragStart(this)">
+                            <div class="bg-white shadow-sm p-2 rounded-2 position-relative">
+                                <div class="drag-handler position-absolute z-1 start-0 top-0 w-100 h-100">
+                                </div>
                                 <h3 class="d-flex align-items-baseline">Video
                                     <pre class="mb-0">&lt;video&gt;</pre>
                                 </h3>
+                                <button class="position-absolute top-50 end-0 translate-middle-y z-3"
+                                    data-bs-toggle="modal" data-bs-target="#videoModal">Add</button>
                             </div>
-                        </button>
+                        </div>
 
                     </div>
                 </div>
@@ -138,7 +189,9 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assests/js/index.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable@1.0.0-beta.2/lib/draggable.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@shopify/draggable/build/umd/index.min.js""></script> -->
+    <script src=" assests/js/index.js"></script>
 </body>
 
 </html>
